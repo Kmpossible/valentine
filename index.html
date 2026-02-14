@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's 💖</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  overflow:hidden;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg,#ffb6c1,#ff69b4);
+  text-align:center;
+}
+
+/* Message */
+h1{
+  color:white;
+  font-size:32px;
+  margin-bottom:30px;
+  animation:fadeIn 2s ease forwards;
+}
+
+/* Bouquet container */
+.bouquet{
+  display:flex;
+  gap:30px;
+}
+
+/* Flower */
+.flower{
+  position:relative;
+  width:80px;
+  height:80px;
+  animation:bloom 2s ease forwards;
+  transform:scale(0);
+}
+
+/* Petals */
+.petal{
+  position:absolute;
+  width:50px;
+  height:50px;
+  background:#ff3366;
+  border-radius:50%;
+}
+
+.petal:nth-child(1){ top:-15px; left:15px; }
+.petal:nth-child(2){ top:15px; left:-15px; }
+.petal:nth-child(3){ top:15px; right:-15px; }
+.petal:nth-child(4){ bottom:-15px; left:15px; }
+
+/* Center */
+.center{
+  position:absolute;
+  top:20px;
+  left:20px;
+  width:40px;
+  height:40px;
+  background:gold;
+  border-radius:50%;
+  z-index:2;
+}
+
+/* Stem */
+.stem{
+  position:absolute;
+  top:70px;
+  left:38px;
+  width:4px;
+  height:120px;
+  background:green;
+}
+
+/* Animations */
+@keyframes bloom{
+  to{ transform:scale(1); }
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* Floating hearts */
+.heart{
+  position:fixed;
+  bottom:-40px;
+  font-size:24px;
+  animation:floatUp linear forwards;
+}
+@keyframes floatUp{
+  to{ transform:translateY(-120vh); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<h1>🌹 Happy Valentine’s, Mister ko 💖</h1>
+
+<div class="bouquet">
+  <div class="flower" style="animation-delay:0.5s;">
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="center"></div>
+    <div class="stem"></div>
+  </div>
+
+  <div class="flower" style="animation-delay:1s;">
+    <div class="petal" style="background:#ff4d88;"></div>
+    <div class="petal" style="background:#ff4d88;"></div>
+    <div class="petal" style="background:#ff4d88;"></div>
+    <div class="petal" style="background:#ff4d88;"></div>
+    <div class="center"></div>
+    <div class="stem"></div>
+  </div>
+
+  <div class="flower" style="animation-delay:1.5s;">
+    <div class="petal" style="background:#ff1493;"></div>
+    <div class="petal" style="background:#ff1493;"></div>
+    <div class="petal" style="background:#ff1493;"></div>
+    <div class="petal" style="background:#ff1493;"></div>
+    <div class="center"></div>
+    <div class="stem"></div>
+  </div>
+</div>
+
+<script>
+/* Floating hearts */
+const hearts=["💖","💕","💘","❤️"];
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.textContent=hearts[Math.floor(Math.random()*hearts.length)];
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(3+Math.random()*3)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),5000);
+},500);
+</script>
+
+</body>
+</html>
